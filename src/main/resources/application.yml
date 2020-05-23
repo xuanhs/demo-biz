@@ -11,4 +11,20 @@ eureka:
 server:
   port: 8100
 
+feign:
+  httpclient:
+    connection-timeout: 2000
+#hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true #HystrixCommand.run()的执行是否有超时限制 默认 true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000 #HystrixCommand.run() 超时时间 默认1000
+ribbon:
+  ReadTimeout: 2000 # 被调用者处理时间限制，超时将触发fallback或报错，
+  ConnectTimeout: 1000
 
